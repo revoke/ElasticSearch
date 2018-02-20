@@ -17,16 +17,16 @@
 		"issues": "https://github.com/Kdyby/ElasticSearch/issues"
 	},
 	"require": {
-		"nette/di": "~2.3@dev",
-		"tracy/tracy": "~2.3@dev",
-		"nette/utils": "~2.3@dev",
+		"nette/di": "~2.4",
+		"tracy/tracy": "~2.4",
+		"nette/utils": "~2.4",
 
 		"ruflin/elastica": "~5.2"
 	},
 	"require-dev": {
 		"nette/application": "~2.4",
 		"nette/bootstrap": "~2.4",
-		"nette/caching": "~2.4",
+		"nette/caching": "~2.5",
 		"nette/component-model": "~2.2",
 		"nette/database": "~2.4",
 		"nette/deprecated": "~2.4",
