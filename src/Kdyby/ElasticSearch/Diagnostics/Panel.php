@@ -25,8 +25,10 @@ use Tracy\IBarPanel;
 /**
  * @author Filip Procházka <filip@prochazka.su>
  */
-class Panel extends Nette\Object implements IBarPanel
+class Panel implements IBarPanel
 {
+	
+	use Nette\SmartObject;
 
 	/**
 	 * @var float
@@ -243,8 +245,12 @@ class Panel extends Nette\Object implements IBarPanel
 	public function register(Kdyby\ElasticSearch\Client $client)
 	{
 		$this->client = $client;
-		$client->onSuccess[] = $this->success;
-		$client->onError[] = $this->failure;
++		$client->onSuccess[] = function ($client, $request, $response, $time) {
++			return $this->success($client, $request, $response, $time);
++		};
++		$client->onError[] = function ($client, $request, $e, $time) {
++			return $this->failure($client, $request, $e, $time);
++		};
 
 		Debugger::getBar()->addPanel($this);
 	}
